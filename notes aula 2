@@ -1,0 +1,5 @@
+stub: empacota a requisição para enviar ao servidor
+modulo de comunicacao cliente envia 
+modulo de comunicacao servidor recebe
+modulo despachange no servidor despacha para stub
+stub desempacota no servidor e envia ao procedimento de serviço

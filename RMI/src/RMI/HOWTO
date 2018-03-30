@@ -1,0 +1,5 @@
+javac *.java
+rmic CalculatorImpl
+rmiregistry &
+java CalculatorClient
+java CalculatorServer
