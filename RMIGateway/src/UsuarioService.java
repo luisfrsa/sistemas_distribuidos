@@ -14,6 +14,7 @@ public class UsuarioService extends java.rmi.server.UnicastRemoteObject implemen
 
     protected UsuarioService() throws RemoteException {
         super();
+        listUsuarios = new ArrayList<>();
     }
 
     public Usuario getById(Long id) {

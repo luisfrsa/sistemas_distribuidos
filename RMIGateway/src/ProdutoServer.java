@@ -20,7 +20,7 @@ public class ProdutoServer {
         try {
             Naming.rebind("//127.0.0.1:1099/ProdutoService", new ProdutoService());
         } catch (Exception e) {
-            System.out.println("Trouble: " + e);
+            e.printStackTrace();
         }
     }
     
