@@ -4,7 +4,7 @@ import java.rmi.Naming;
 public class CompraServer {
 
     public static void main(String args[]) {
-        new UsuarioServer();
+//        new UsuarioServer();
     }
 
     public CompraServer() {

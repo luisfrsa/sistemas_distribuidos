@@ -1,7 +1,6 @@
 
 
 /**
- *
  * @author guest-u1pwic
  */
 public class CompraProduto {
@@ -33,6 +32,6 @@ public class CompraProduto {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-    
-    
+
+
 }

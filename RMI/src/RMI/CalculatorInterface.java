@@ -1,7 +1,7 @@
 
 import java.rmi.RemoteException;
 
-public interface Calculator extends java.rmi.Remote {
+public interface CalculatorInterface extends java.rmi.Remote {
 
     public long add(long a, long b)
             throws java.rmi.RemoteException;

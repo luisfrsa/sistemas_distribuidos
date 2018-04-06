@@ -1,10 +1,10 @@
-
+import java.io.Serializable;
 
 /**
  *
  * @author guest-u1pwic
  */
-public class Usuario {
+public class Usuario implements Serializable {
     
     private Long id;
     private String nome;

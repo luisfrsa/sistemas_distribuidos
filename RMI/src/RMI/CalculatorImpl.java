@@ -2,7 +2,7 @@
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 
-public class CalculatorImpl extends java.rmi.server.UnicastRemoteObject implements Calculator {
+public class CalculatorImpl extends java.rmi.server.UnicastRemoteObject implements CalculatorInterface {
 
     public CalculatorImpl() throws java.rmi.RemoteException {
         super();
