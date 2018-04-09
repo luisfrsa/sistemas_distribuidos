@@ -1,0 +1,2 @@
+Run rmiregistry in build/
+run /bin/bash run.sh
