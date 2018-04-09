@@ -1,5 +1,6 @@
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -38,12 +39,15 @@ public class APIGatewayService extends java.rmi.server.UnicastRemoteObject imple
 
     @Override
     public Usuario getUsuarioById(Long id) throws RemoteException {
+        System.out.println("APIGatewayService.java - Buscando usuario pelo id " + id);
         usuarioService = getUsuarioServiceInstance();
         return usuarioService.getById(id);
     }
 
     @Override
     public Usuario addUsuario(Usuario usuario)throws RemoteException{
+        usuarioService = getUsuarioServiceInstance();
+        System.out.println("APIGatewayService.java - Adicionando usuario " + usuario.toString());
         return usuarioService.addOne(usuario);
     }
 
