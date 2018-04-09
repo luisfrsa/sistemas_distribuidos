@@ -17,6 +17,7 @@ public class UsuarioService extends java.rmi.server.UnicastRemoteObject implemen
         listUsuarios = new ArrayList<>();
     }
 
+    @Override
     public Usuario getById(Long id) {
         Optional<Usuario> usuario = listUsuarios
                 .stream()
@@ -25,23 +26,27 @@ public class UsuarioService extends java.rmi.server.UnicastRemoteObject implemen
         return usuario.orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
     }
 
+    @Override
     public List<Usuario> getAll() {
-        if (listUsuarios.size() == 0) {
-            listUsuarios = initList();
-        }
+
         return listUsuarios;
     }
 
-
-    private List<Usuario> initList() {
-        listUsuarios = new ArrayList<>();
-        listUsuarios.add(new Usuario(2L, "ana"));
-        listUsuarios.add(new Usuario(2L, "ana"));
-        listUsuarios.add(new Usuario(3L, "joao"));
-        listUsuarios.add(new Usuario(4L, "roberto"));
-        listUsuarios.add(new Usuario(5L, "maria"));
-        return listUsuarios;
+    @Override
+    public Usuario addOne(Usuario usuario) {
+        listUsuarios.add(usuario);
+        return usuario;
     }
+
+//    private List<Usuario> initList() {
+//        listUsuarios = new ArrayList<>();
+//        listUsuarios.add(new Usuario(2L, "ana"));
+//        listUsuarios.add(new Usuario(2L, "ana"));
+//        listUsuarios.add(new Usuario(3L, "joao"));
+//        listUsuarios.add(new Usuario(4L, "roberto"));
+//        listUsuarios.add(new Usuario(5L, "maria"));
+//        return listUsuarios;
+//    }
 
 }
 

@@ -42,6 +42,11 @@ public class APIGatewayService extends java.rmi.server.UnicastRemoteObject imple
         return usuarioService.getById(id);
     }
 
+    @Override
+    public Usuario addUsuario(Usuario usuario)throws RemoteException{
+        return usuarioService.addOne(usuario);
+    }
+
 }
 
 

@@ -6,5 +6,6 @@ public interface APIGatewayServiceInterface extends java.rmi.Remote {
 
     public List<Usuario> getAllUsuarios() throws RemoteException;
     public Usuario getUsuarioById(Long id) throws RemoteException;
+    public Usuario addUsuario(Usuario usuario) throws RemoteException;
 
 }
