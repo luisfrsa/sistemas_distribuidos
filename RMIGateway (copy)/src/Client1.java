@@ -11,17 +11,15 @@ public class Client1 {
         try {
             APIGatewayServiceInterface apiGateway = (APIGatewayServiceInterface) Naming.lookup("//127.0.0.1:1099/APIGateway");
             Client1 self = new Client1(apiGateway);
-
-            System.out.println("\n--------Criando usuarios--------");
             self.createUsers();
-
-            System.out.println("\n--------Get usuarios--------");
             self.getUserById(1L);
-            self.getUserById(2L);
-            self.getUserById(3L);
-
-            System.out.println("\n--------Get All usuarios--------");
             self.getAllUsers();
+
+//            List<Usuario> listUsuario = apiGateway.getAllUsuarios();
+//            System.out.println("Client!");
+//            listUsuario.forEach(u -> {
+//                System.out.println(u.toString());
+//            });
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,12 +33,14 @@ public class Client1 {
 
     private void createUsers() {
         List<Usuario> listUsuarios = new ArrayList<>();
-        listUsuarios.add(new Usuario(1L, "ana"));
-        listUsuarios.add(new Usuario(2L, "paulo"));
+        listUsuarios.add(new Usuario(2L, "ana"));
+        listUsuarios.add(new Usuario(2L, "ana"));
         listUsuarios.add(new Usuario(3L, "joao"));
+        listUsuarios.add(new Usuario(4L, "roberto"));
+        listUsuarios.add(new Usuario(5L, "maria"));
         listUsuarios.forEach(usuario -> {
+            System.out.println("Client1.java - Adicionando usuario " + usuario.toString());
             try {
-                System.out.println("Client1.java - Adicionando usuario " + usuario.toString());
                 apiGateway.addUsuario(usuario);
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -49,10 +49,9 @@ public class Client1 {
     }
 
 
-    private void getUserById(Long id) throws RemoteException {
-        System.out.println("Client1.java - Buscando usuario pelo id " + id);
+    private void getUserById(Long id) {
         Usuario usuario = apiGateway.getUsuarioById(id);
-        System.out.println("Client1.java - Usuario encontrado pelo pelo id " + usuario.toString());
+        System.out.println("Client1.java - Buscando usuario pelo id " + usuario.toString());
     }
 
     private void getAllUsers() throws RemoteException {

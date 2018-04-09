@@ -1,36 +1,39 @@
 
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import java.rmi.RemoteException;
+import java.util.*;
 
 /**
  *
  * @author guest-u1pwic
  */
-public class ProdutoService extends java.rmi.server.UnicastRemoteObject {
+public class ProdutoService extends java.rmi.server.UnicastRemoteObject implements ProdutoServiceInterface {
 
-    private Set<Produto> listaProdutos;
+    private List<Produto> listProdutos = new ArrayList<>();
 
-    public ProdutoService() throws java.rmi.RemoteException{
+    protected ProdutoService() throws RemoteException {
+        super();
     }
 
-    private Produto getById(Long id) {
-        Optional<Produto> produto = listaProdutos
+    @Override
+    public Produto getById(Long id) {
+        return listProdutos
                 .stream()
-                .filter(p -> Objects.equals(p.getId(), id))
-                .findFirst();
-
-        return produto.orElseThrow(() -> new RuntimeException("Produto não encontrado"));
-
+                .filter(u -> Objects.equals(u.getId(), id))
+                .findFirst()
+                .get();
     }
 
-    private Set<Produto> getAllProdutos() {
-        listaProdutos.clear();
-        listaProdutos.add(new Produto(1L, "Celular", 1800.00));
-        listaProdutos.add(new Produto(2L, "Computador", 2500.00));
-        listaProdutos.add(new Produto(3L, "Mouse", 50.00));
-        listaProdutos.add(new Produto(4L, "Teclado", 120.00));
-        listaProdutos.add(new Produto(5L, "Monitor", 600.00));
-        return listaProdutos;
+    @Override
+    public List<Produto> getAll() {
+        return listProdutos;
     }
+
+    @Override
+    public Produto addOne(Produto produto) {
+        System.out.println("ProdutoService.java - Adicionando produto " + produto.toString());
+        listProdutos.add(produto);
+        return produto;
+    }
+
+
 }

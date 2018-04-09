@@ -5,12 +5,8 @@ javac *.java -d build/;
 echo -e "Build\n";
 cd build/;
 echo -e "RMIC\n";
-rmic UsuarioService && rmic APIGatewayService && rmic ProdutoService;
+rmic UsuarioService && rmic APIGatewayService;
 echo -e "Start server....\n";
-java UsuarioServer &
- java ProdutoServer &
- java APIGateway &
- java ClientUsuario &
- java ClientProduto;
+java UsuarioServer & java APIGateway & java Client1;
 cd ..;
 echo -e "End\n";

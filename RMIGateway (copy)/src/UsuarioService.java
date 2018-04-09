@@ -10,33 +10,43 @@ import java.util.List;
  */
 public class UsuarioService extends java.rmi.server.UnicastRemoteObject implements UsuarioServiceInterface {
 
-    private List<Usuario> listUsuarios = new ArrayList<>();
+    private List<Usuario> listUsuarios;
 
     protected UsuarioService() throws RemoteException {
         super();
+        listUsuarios = new ArrayList<>();
     }
 
     @Override
     public Usuario getById(Long id) {
-        return listUsuarios
+        Optional<Usuario> usuario = listUsuarios
                 .stream()
                 .filter(u -> Objects.equals(u.getId(), id))
-                .findFirst()
-                .get();
+                .findFirst();
+        return usuario.orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
     }
 
     @Override
     public List<Usuario> getAll() {
+
         return listUsuarios;
     }
 
     @Override
     public Usuario addOne(Usuario usuario) {
-        System.out.println("UsuarioService.java - Adicionando usuario " + usuario.toString());
         listUsuarios.add(usuario);
         return usuario;
     }
 
+//    private List<Usuario> initList() {
+//        listUsuarios = new ArrayList<>();
+//        listUsuarios.add(new Usuario(2L, "ana"));
+//        listUsuarios.add(new Usuario(2L, "ana"));
+//        listUsuarios.add(new Usuario(3L, "joao"));
+//        listUsuarios.add(new Usuario(4L, "roberto"));
+//        listUsuarios.add(new Usuario(5L, "maria"));
+//        return listUsuarios;
+//    }
 
 }
 
