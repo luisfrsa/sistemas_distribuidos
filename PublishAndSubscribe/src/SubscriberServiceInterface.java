@@ -3,12 +3,22 @@ import java.util.List;
 
 public interface SubscriberServiceInterface extends java.rmi.Remote {
 
-//    public List<Usuario> getAllUsuarios() throws RemoteException;
-//    public Usuario getUsuarioById(Long id) throws RemoteException;
-//    public Usuario addUsuario(Usuario usuario) throws RemoteException;
-//
-//    public List<Produto> getAllProdutos() throws RemoteException;
-//    public Produto getProdutoById(Long id) throws RemoteException;
-//    public Produto addProduto(Produto produto) throws RemoteException;
+    public void receivePublishedMessage(String published) throws RemoteException;
 
+    public List<IntermediateServiceInterface> createIntermediateList(String name) throws RemoteException;
+
+    public void subscribeData() throws RemoteException;
+
+    public void setName(String nome) throws RemoteException;
+
+    public String getName() throws RemoteException;
+
+    public List<IntermediateServiceInterface> getIntermediateServiceList() throws RemoteException;
+
+    public void setIntermediateServiceList(List<IntermediateServiceInterface> intermediateServiceList) throws RemoteException;
+
+    public List<String> getSubscribeList() throws RemoteException;
+
+    public void setSubscribeList(List<String> subscribeList) throws RemoteException;
 }
+

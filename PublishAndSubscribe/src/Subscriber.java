@@ -1,23 +1,24 @@
 
 import java.rmi.Naming;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Subscriber {
-
-    List<String> interesetList = new ArrayList<>();
 
     public static void main(String[] args) {
         System.out.println("Subscriber");
         Subscriber instancia = new Subscriber();
-        instancia.setUpServer();
+        instancia.setUpServer(args[0]);
+//        instancia.setUpServer("Subscriber");
     }
 
-    public void setUpServer() {
+    public void setUpServer(String name) {
         try {
-            System.out.println("Subscriber - setUpServer");
-            SubscriberServiceInterface api = new SubscriberService();
-            Naming.rebind("//127.0.0.1:1099/Subscriber", api);//disponibiliza esta url para acessoa ele (Como servidor)
+            System.out.println("Subscriber - settingUpServer: "+"//127.0.0.1:1099/"+name);
+            SubscriberServiceInterface connect = new SubscriberService();
+            Naming.rebind("//127.0.0.1:1099/"+name, connect);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -25,6 +26,4 @@ public class Subscriber {
 
     public Subscriber() {
     }
-   
-
 }

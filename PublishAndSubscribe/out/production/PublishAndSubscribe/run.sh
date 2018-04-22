@@ -1,0 +1,14 @@
+echo -e "Init-------\n";
+rm build/*.class;
+echo -e "rm build/\n";
+javac *.java -d build/;
+sleep 1;
+echo -e "Build\n";
+cd build/;
+echo -e "RMIC\n";
+rmic IntermediateService &&  rmic SubscriberService;
+sleep 1;
+echo -e "Start server....\n";
+java Intermediate;
+cd ..;
+echo -e "End\n";
